@@ -44,14 +44,16 @@ class Person {
   constructor (name, age) {
     this.name = name,
     this.age = age,
-    this.stomach = ""
+    this.stomach = []
   }
 
-  eat(){
-
+  eat(edible){
+      if (this.stomach.length < 10){
+        this.stomach.push(edible);
+      }
   }
   poop(){
-    
+    this.stomach = [];
   }
 
   toString(){
