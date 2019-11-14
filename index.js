@@ -42,8 +42,8 @@ class Airplane {
 
 class Person {
   constructor (name, age) {
-    this.name = name,
-    this.age = age,
+    this.name = name;
+    this.age = age;
     this.stomach = []
   }
 
@@ -77,10 +77,10 @@ class Person {
 
 class Car {
   constructor(model, milesPerGallon){
-    this.model = model,
-    this.milesPerGallon = milesPerGallon,
-    this.tank = 0,
-    this.odometer = 0
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
   }
   fill(gallons){
     return this.tank += gallons
@@ -117,8 +117,8 @@ class Car {
 */
 class Lambdasian {
   constructor(args){
-    this.name = args.name,
-    this.age = args.age,
+    this.name = args.name;
+    this.age = args.age;
     this.location = args.location
   }
   speak(){
@@ -143,16 +143,20 @@ class Lambdasian {
 class Instructor extends Lambdasian {
   constructor(args){
     super(args);
-    this.specialty = args.specialty,
-    this.favLanguage = args.favLanguage,
-    this.catchPhrase = args.catchPhrase
+    this.specialty = args.specialty;
+    this.favLanguage = args.favLanguage;
+    this.catchPhrase = args.catchPhrase;    
   }
   demo(subject){
-    return `Today we are learning about ${subject}`;
+    return `Today we are learning about ${subject}`
   }
   grade(student, subject){
-    return `${student.name} receives a perfect score on ${subject}`;
+    return `${student.name} receives a perfect score on ${subject}`
   }
+  randomScore() {
+    Student.grade(Math.floor(Math.random(0) * (11) -5))
+  }
+    
 }
 
 /*
@@ -170,12 +174,27 @@ class Instructor extends Lambdasian {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
+
+/*
+  STRETCH PROBLEM (no tests!)
+    - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100. ✅
+    - Now that our students have a grade build out a method on the Instructor 
+    (this will be used by _BOTH_ instructors and PM's) that will randomly add or subtract points to a 
+    student's grade. _Math.random_ will help.
+    - Add a graduate method to a student.
+      + This method, when called, will check the grade of the student and see if they're ready to graduate 
+      from Lambda School
+      + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their 
+      assignments to increase their score.
+*/
+
 class Student extends Lambdasian {
   constructor(args){
     super(args);
-    this.previousBackground = args.previousBackground,
-    this.className = args.className,
-    this.favSubjects = args.favSubjects
+    this.previousBackground = args.previousBackground;
+    this.className = args.className;
+    this.favSubjects = args.favSubjects;
+    this.grade = 50 // could randomize
   }
   listSubjects(){
     return `Loving ${this.favSubjects}`
@@ -185,6 +204,13 @@ class Student extends Lambdasian {
   }
   sprintChallenge(subject){
     return `${this.name} has begun sprint challenge on ${subject}`
+  }
+  graduate(){
+    if (this.grade >= 70) {
+      return `CONGRATULATIONS ${this.student}! You've graduated Lambda!`
+    } else { 
+      return `fasdfsdfsdfsdfdsfds`
+    }
   }
 }
 
